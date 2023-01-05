@@ -21,7 +21,7 @@ This project is a whatsapp bot that uses OpenAI's ChatGPT to respond to user inp
 
 ## Usage
 
-To use the bot, simply send a message with `zappy` command followed by your prompt. For example:
+To use the bot, simply send a message with `zappy`, `Zappy` command followed by your prompt. For example:
 
 `zappy What is the meaning of life?`
 

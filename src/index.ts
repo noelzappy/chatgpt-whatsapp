@@ -1,29 +1,13 @@
-const process = require("process")
 const qrcode = require("qrcode-terminal");
-const { Client, LocalAuth } = require("whatsapp-web.js");
-import { ChatGPTAPIBrowser } from 'chatgpt'
+import { api } from "./configs/chatAPI";
+import { wClient as client } from "./configs/wClient";
+import { handler as handleMessage  } from "./services/handleMessage";
 
-// Environment variables
-require("dotenv").config()
 
 // Prefix check
 const prefixEnabled = true
 const prefix = ["Zappy", "ZappyBot", "Zappy-Bot", "Zappy Bot", "zappy", "zappybot", "zappy-bot", "zappy bot"]
-const APP_NAME = "Zappy BOT"
-
-// Whatsapp Client
-const client = new Client({
-     authStrategy: new LocalAuth(),
-})
-
-// ChatGPT Client
-const api = new ChatGPTAPIBrowser(
-    {
-    email: process.env.OPENAI_EMAIL,
-    password: process.env.OPENAI_PASSWORD,
-    isGoogleLogin: true
-  }
-)
+export const APP_NAME = "Zappy BOT"
 
 // Entrypoint
 const start = async () => {
@@ -67,27 +51,6 @@ const start = async () => {
     })
 
     client.initialize()
-}
-
-const handleMessage = async (message: any, prompt: any) => {
-    try {
-        const start = Date.now()
-            
-        console.log(`[${APP_NAME}] Received prompt from ` + message.from + ": " + prompt)
-        const response = await api.sendMessage(prompt)
-
-        console.log(`[${APP_NAME}] Answer to ${message.from}: ${response.response}`)
-
-        const end = Date.now() - start
-
-        console.log(`[${APP_NAME}] ChatGPT took ` + end + "ms")
-
-        // Send the response to the chat
-        message.reply(response.response)
-    } catch (error: any) {
-        console.error(`[${APP_NAME}] Failed to send message to ChatGPT API: ` + error)
-        message.reply("I'm sorry, I'm not available at the moment to reply. I will as soon as possible.")
-    }  
 }
 
 start()
