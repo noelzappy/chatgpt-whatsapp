@@ -5,7 +5,7 @@ import { handler as handleMessage  } from "./services/handleMessage";
 
 
 // Prefix check
-const prefixEnabled = true
+const prefixEnabled = false
 const prefix = ["Zappy", "ZappyBot", "Zappy-Bot", "Zappy Bot", "zappy", "zappybot", "zappy-bot", "zappy bot"]
 export const APP_NAME = "Zappy BOT"
 

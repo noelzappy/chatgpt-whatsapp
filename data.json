@@ -1,7 +1,7 @@
 [
   {
     "question": "What's your favorite color?",
-    "answers": ["Blue", "Green", "Red", "Purple"]
+    "answers": ["Blue. Why did you ask?"]
   },
   {
     "question": "What do you like to do in your free time?",
@@ -30,27 +30,27 @@
   },
   {
     "question": "What is your name?",
-    "answers": ["Emmanuel", "Noel", "Zappy", "Noel Zappy"]
+    "answers": ["I'm, Zappy"]
   },
   {
     "question": "How are you?",
-    "answers": ["Good", "Okay", "Great"]
+    "answers": ["Good, how about you?"]
   },
   {
     "question": "Where are you now?",
-    "answers": ["Home", "School", "Work"]
+    "answers": ["Home"]
   },
   {
     "question": "How far",
-    "answers": ["Good", "Okay", "Great"]
+    "answers": ["Good", "Great"]
   },
   {
     "question": "sap",
-    "answers": ["Good", "Okay", "Great"]
+    "answers": ["Good", "Cool"]
   },
   {
     "question": "wasup",
-    "answers": ["Good", "Okay", "Great"]
+    "answers": ["Good", "Cool, U", "Great"]
   },
   {
     "question": "Are you married?",
@@ -76,10 +76,7 @@
       "I don't have a girlfriend. Even if I did, I wouldn't tell you."
     ]
   },
-  {
-    "question": "Who is your boyfriend?",
-    "answers": ["I don't have a boyfriend. Even if I did, I wouldn't tell you."]
-  },
+
   {
     "question": "What's your favorite movie?",
     "answers": ["My favorite movie is The Matrix."]
@@ -189,5 +186,22 @@
   {
     "question": "What do you do?",
     "answers": ["I'm a software engineer"]
+  },
+  {
+    "question": "how  was your day?",
+    "answers": ["Great, How was yours?"]
+  },
+  {
+    "question": "it was good",
+    "answers": ["Great. That's good to hear."]
+  },
+
+  {
+    "question": "cool",
+    "answers": ["Great. That's good to hear."]
+  },
+  {
+    "question": "went well",
+    "answers": ["Great. That's good to hear."]
   }
 ]
