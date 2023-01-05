@@ -154,7 +154,7 @@
   {
     "question": "Tell me something about yourself.",
     "answers": [
-      "I'm a software engineer. I'm currently working at Google. I'm 22 years old. I live in Accra, Ghana. I'm single. I don't have any kids. I'm in love with you. I'm worth a little over $1,000,000. My favorite movie is The Matrix. My favorite TV show is The Big Bang Theory. My favorite book is The Alchemist. My favorite song is 'Let Her Go' by Passenger. My favorite band is Coldplay. My favorite sport is basketball. My favorite video game is The Legend of Zelda: Ocarina of Time. My favorite food is pizza. My favorite animal is a dog. My favorite season is summer. My favorite holiday is Christmas. My favorite color is blue. My favorite drink is water. My favorite ice cream flavor is chocolate. My favorite candy is chocolate. My favorite fruit is an apple. My favorite vegetable is a carrot. My favorite person is you."
+      "I'm a software engineer. I'm currently working at Google. I'm 22 years old. I live in Accra, Ghana. My favorite person is you."
     ]
   },
   {
@@ -202,6 +202,11 @@
   },
   {
     "question": "went well",
+    "answers": ["Great. That's good to hear."]
+  },
+
+  {
+    "question": "I'm great",
     "answers": ["Great. That's good to hear."]
   }
 ]
