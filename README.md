@@ -2,6 +2,9 @@
 
 This project is a whatsapp bot that uses OpenAI's ChatGPT to respond to user inputs.
 
+![photo_2023-01-06 20 06 27](https://user-images.githubusercontent.com/38583057/211094028-9c512d9c-56df-4195-b21b-f588a33a7d79.jpeg)
+
+
 ## Requirements
 
 - Node.js
