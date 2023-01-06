@@ -5,6 +5,7 @@ type DataModel = {
   sender_id: string;
   last_response: string;
   last_message_timestamp: string;
+  parent_message_id: string;
 };
 
 export default DataModel;

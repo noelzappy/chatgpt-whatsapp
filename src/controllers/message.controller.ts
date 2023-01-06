@@ -7,7 +7,8 @@ import {
   saveConversation,
   updateSingleMessageFromSender,
 } from "../services/messages.service";
-import { ChatResponse } from "chatgpt";
+import { ChatResponse, SendMessageOptions } from "chatgpt";
+import DataModel from "src/models/data.model";
 
 const personalMessageHandler = async (message: any, prompt: any) => {
   const wordMatch = {
@@ -54,21 +55,26 @@ export const handler = async (message: any, prompt: any) => {
 
     const prevConversation: any = await getMessagesOfSender(message.from); // Get the previous conversation of the sender
 
-    let chatOptions = {};
-    let hasPreviousConversation = false;
+    let chatOptions: SendMessageOptions = null;
+    let hasPreviousConversation: boolean = false;
+
     if (prevConversation && prevConversation.length > 0) {
       hasPreviousConversation = true;
       chatOptions = {
         conversationId: prevConversation[0].conversation_id,
-        parentMessageId: prevConversation[0].message_id,
+        parentMessageId: prevConversation[0].parent_message_id,
+        action: "next",
+        messageId: prevConversation[0].message_id,
       };
     }
 
     let response: ChatResponse;
 
-    if (hasPreviousConversation) {
+    if (hasPreviousConversation || chatOptions) {
       response = await api.sendMessage(prompt, chatOptions);
-    } else {
+    }
+
+    if (!hasPreviousConversation || !chatOptions) {
       response = await api.sendMessage(prompt);
     }
 
@@ -81,13 +87,14 @@ export const handler = async (message: any, prompt: any) => {
 
     if (!hasPreviousConversation) {
       // Save the conversation
-      const conversation = {
+      const conversation: DataModel = {
         last_message: prompt,
         message_id: response.messageId,
         conversation_id: response.conversationId,
         sender_id: message.from,
         last_response: response.response,
         last_message_timestamp: new Date().toISOString(),
+        parent_message_id: response.messageId,
       };
       await saveConversation(conversation);
     } else {
@@ -96,6 +103,7 @@ export const handler = async (message: any, prompt: any) => {
         message.from,
         prompt,
         response.response,
+        response.messageId,
         new Date().toISOString()
       );
     }

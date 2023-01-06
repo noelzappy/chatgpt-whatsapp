@@ -11,6 +11,7 @@ function saveConversation(data: DataModel) {
       sender_id,
       last_response,
       last_message_timestamp,
+      parent_message_id,
     } = data;
 
     db.run(
@@ -20,7 +21,9 @@ function saveConversation(data: DataModel) {
     conversation_id,
     sender_id,
     last_response,
-    last_message_timestamp) VALUES (?, ?, ?, ?, ?, ?)`,
+    last_message_timestamp,
+    parent_message_id
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         last_message,
         message_id,
@@ -28,6 +31,7 @@ function saveConversation(data: DataModel) {
         sender_id,
         last_response,
         last_message_timestamp,
+        parent_message_id,
       ],
       function (error) {
         if (error) {
@@ -62,12 +66,19 @@ function updateSingleMessageFromSender(
   sender_id: string,
   last_message: string,
   last_response: string,
-  last_message_timestamp: string
+  last_message_timestamp: string,
+  message_id: string
 ) {
   return new Promise((resolve, reject) => {
     db.run(
-      `UPDATE messages SET last_message = ?, last_response = ?, last_message_timestamp = ? WHERE sender_id = ?`,
-      [last_message, last_response, last_message_timestamp, sender_id],
+      `UPDATE messages SET last_message = ?, last_response = ?, last_message_timestamp = ? message_id = ? WHERE sender_id = ?`,
+      [
+        last_message,
+        last_response,
+        last_message_timestamp,
+        sender_id,
+        message_id,
+      ],
       (error: any) => {
         if (error) {
           reject(error);
@@ -77,6 +88,7 @@ function updateSingleMessageFromSender(
           last_response,
           last_message_timestamp,
           sender_id,
+          message_id,
         });
       }
     );
