@@ -56,7 +56,7 @@ export const handler = async (message: any, prompt: any) => {
         message.reply(response.response)
     } catch (error: any) {
         console.error(`[${APP_NAME}] Failed to send message to ChatGPT API: ` + error)
-        message.reply("I'm sorry, I'm not available at the moment to reply. I will as soon as possible.")
+        // message.reply("I'm sorry, I'm not available at the moment to reply. I will as soon as possible.")
     }  
 }
 
