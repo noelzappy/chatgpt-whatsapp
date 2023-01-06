@@ -49,11 +49,12 @@ export const handler = async (message: any, prompt: any) => {
       `[${APP_NAME}] Received prompt from ` + message.from + ": " + prompt
     );
 
+    // Check if the message is a personal message or not and handles it
     const isHandled = await personalMessageHandler(message, prompt);
-
     if (isHandled) return;
 
-    const prevConversation: any = await getMessagesOfSender(message.from); // Get the previous conversation of the sender
+    // Get previous conversations
+    const prevConversation: any = await getMessagesOfSender(message.from);
 
     let chatOptions: SendMessageOptions = null;
     let hasPreviousConversation: boolean = false;
