@@ -67,13 +67,15 @@ const personalMessageHandler = async (message: any, prompt: any) => {
   return false;
 };
 
-export const handler = async (message: any, prompt: any) => {
+export const handler = async (message: any, p: any) => {
   try {
     const start = Date.now();
 
     const messagePrefix = message.body.split(" ")[0];
 
     const isPrefix = prefix.includes(messagePrefix);
+
+    const prompt = message.body.replace(messagePrefix, "");
 
     if (!isPrefix) return;
 
