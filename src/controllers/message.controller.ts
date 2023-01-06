@@ -34,6 +34,9 @@ const prefix = [
   "?",
   "z",
   "Z",
+  "zap",
+  "Zap",
+  "ZAP",
 ];
 
 const personalMessageHandler = async (message: any, prompt: any) => {
