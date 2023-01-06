@@ -15,7 +15,7 @@ function createTable(db) {
     conversation_id TEXT NOT NULL UNIQUE,
     sender_id TEXT NOT NULL UNIQUE,
     last_response TEXT NOT NULL,
-    last_message_timestamp TEXT NOT NULL
+    last_message_timestamp TEXT NOT NULL,
     parent_message_id TEXT NOT NULL UNIQUE
   );
 `);
