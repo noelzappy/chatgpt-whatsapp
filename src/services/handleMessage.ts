@@ -3,6 +3,7 @@ const stringSimilarity = require("string-similarity");
 import { APP_NAME } from ".."
 import { api } from "../configs/chatAPI"
 import data from "../../data.json"
+import { validateResponse } from "./validateResponse";
 
 export const handler = async (message: any, prompt: any) => {
     try {
@@ -45,6 +46,12 @@ export const handler = async (message: any, prompt: any) => {
 
         console.log(`[${APP_NAME}] ChatGPT took ` + end + "ms")
 
+        const { response: responseMessage } = response
+
+        const isValid = validateResponse(responseMessage)
+
+        if (!isValid) return
+        
         // Send the response to the chat
         message.reply(response.response)
     } catch (error: any) {
