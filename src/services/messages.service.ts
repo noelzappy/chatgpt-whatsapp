@@ -71,7 +71,7 @@ function updateSingleMessageFromSender(
 ) {
   return new Promise((resolve, reject) => {
     db.run(
-      `UPDATE messages SET last_message = ?, last_response = ?, last_message_timestamp = ? message_id = ? WHERE sender_id = ?`,
+      `UPDATE messages SET last_message = ?, last_response = ?, last_message_timestamp = ?, message_id = ? WHERE sender_id = ?`,
       [
         last_message,
         last_response,

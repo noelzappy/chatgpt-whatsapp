@@ -64,7 +64,6 @@ export const handler = async (message: any, prompt: any) => {
         conversationId: prevConversation[0].conversation_id,
         parentMessageId: prevConversation[0].parent_message_id,
         action: "next",
-        messageId: prevConversation[0].message_id,
       };
     }
 
