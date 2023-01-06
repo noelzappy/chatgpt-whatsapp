@@ -29,6 +29,11 @@ const prefix = [
   "bot",
   "Bot",
   "BOT",
+  ".",
+  "!",
+  "?",
+  "z",
+  "Z",
 ];
 
 const personalMessageHandler = async (message: any, prompt: any) => {
@@ -62,27 +67,15 @@ const personalMessageHandler = async (message: any, prompt: any) => {
   return false;
 };
 
-const groupMessageHandler = async (message: any, response: ChatResponse) => {
-  const messagePrefix = message.body.split(" ")[0];
-  const isPrefix = prefix.includes(messagePrefix);
-  if (isPrefix) {
-    message.reply(response.response);
-  }
-};
-
-export const handler = async (message: any, p: any) => {
+export const handler = async (message: any, prompt: any) => {
   try {
     const start = Date.now();
-
-    let prompt: any = p;
 
     const messagePrefix = message.body.split(" ")[0];
 
     const isPrefix = prefix.includes(messagePrefix);
 
-    if (isPrefix) {
-      prompt = message.body.substring(messagePrefix.length + 1);
-    }
+    if (!isPrefix) return;
 
     console.log(
       `[${APP_NAME}] Received prompt from ` + message.from + ": " + prompt
@@ -117,13 +110,6 @@ export const handler = async (message: any, p: any) => {
       response = await api.sendMessage(prompt);
     }
 
-    // const response: ChatResponse = await api.sendMessage(prompt, chatOptions);
-    // const response = {
-    //   response: "Hello! How can I help you today?",
-    //   conversationId: "78fc8514-a465-4f25-a410-f41f5245c235" + Math.random(),
-    //   messageId: "deefbd36-71df-46a4-a0b7-1d496ef206bf" + Math.random(),
-    // };
-
     if (!hasPreviousConversation) {
       // Save the conversation
       const conversation: DataModel = {
@@ -151,18 +137,11 @@ export const handler = async (message: any, p: any) => {
       `[${APP_NAME}] Answer to ${message.from}: ${response.response}`
     );
 
-    // Check if the message from a specific group of mine. If so, handle it.
-    // This may not be relevant to you.
-    if (message.from === "120363029022242088@g.us") {
-      groupMessageHandler(message, prompt);
-      return;
-    }
+    message.reply(response.response);
 
     const end = Date.now() - start;
 
     console.log(`[${APP_NAME}] ChatGPT took ` + end + "ms");
-
-    message.reply(response.response);
   } catch (error: any) {
     console.error(
       `[${APP_NAME}] Failed to send message to ChatGPT API: ` + error
