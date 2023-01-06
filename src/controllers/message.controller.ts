@@ -25,7 +25,7 @@ const personalMessageHandler = async (message: any, prompt: any) => {
     }
   });
 
-  if (wordMatch.value > 0.5) {
+  if (wordMatch.value > 0.7) {
     const dataMessage = data[wordMatch.index];
 
     const { answers } = dataMessage;
@@ -40,8 +40,6 @@ const personalMessageHandler = async (message: any, prompt: any) => {
   return false;
 };
 
-const handlerProgress = (progress: ChatResponse, message: string) => {};
-
 export const handler = async (message: any, prompt: any) => {
   try {
     const start = Date.now();
@@ -50,9 +48,9 @@ export const handler = async (message: any, prompt: any) => {
       `[${APP_NAME}] Received prompt from ` + message.from + ": " + prompt
     );
 
-    // const isHandled = await personalMessageHandler(message, prompt);
+    const isHandled = await personalMessageHandler(message, prompt);
 
-    // if (isHandled) return;
+    if (isHandled) return;
 
     const prevConversation: any = await getMessagesOfSender(message.from); // Get the previous conversation of the sender
 
