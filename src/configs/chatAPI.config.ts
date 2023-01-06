@@ -10,5 +10,5 @@ export const api = new ChatGPTAPIBrowser({
   password: process.env.OPENAI_PASSWORD,
   isGoogleLogin: true,
   minimize: true,
-  debug: true,
+  debug: false,
 });

@@ -10,6 +10,27 @@ import {
 import { ChatResponse, SendMessageOptions } from "chatgpt";
 import DataModel from "src/models/data.model";
 
+// Prefix check
+const prefix = [
+  "Zappy",
+  "ZappyBot",
+  "Zappy-Bot",
+  "Zappy Bot",
+  "zappy",
+  "zappybot",
+  "zappy-bot",
+  "zappy bot",
+  "gpt",
+  "GPT",
+  "gpt3",
+  "GPT3",
+  "gpt-3",
+  "GPT-3",
+  "bot",
+  "Bot",
+  "BOT",
+];
+
 const personalMessageHandler = async (message: any, prompt: any) => {
   const wordMatch = {
     index: -1,
@@ -41,9 +62,27 @@ const personalMessageHandler = async (message: any, prompt: any) => {
   return false;
 };
 
-export const handler = async (message: any, prompt: any) => {
+const groupMessageHandler = async (message: any, response: ChatResponse) => {
+  const messagePrefix = message.body.split(" ")[0];
+  const isPrefix = prefix.includes(messagePrefix);
+  if (isPrefix) {
+    message.reply(response.response);
+  }
+};
+
+export const handler = async (message: any, p: any) => {
   try {
     const start = Date.now();
+
+    let prompt: any = p;
+
+    const messagePrefix = message.body.split(" ")[0];
+
+    const isPrefix = prefix.includes(messagePrefix);
+
+    if (isPrefix) {
+      prompt = message.body.substring(messagePrefix.length + 1);
+    }
 
     console.log(
       `[${APP_NAME}] Received prompt from ` + message.from + ": " + prompt
@@ -111,6 +150,13 @@ export const handler = async (message: any, prompt: any) => {
     console.log(
       `[${APP_NAME}] Answer to ${message.from}: ${response.response}`
     );
+
+    // Check if the message from a specific group of mine. If so, handle it.
+    // This may not be relevant to you.
+    if (message.from === "120363029022242088@g.us") {
+      groupMessageHandler(message, prompt);
+      return;
+    }
 
     const end = Date.now() - start;
 
