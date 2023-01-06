@@ -9,6 +9,7 @@ export const api = new ChatGPTAPIBrowser(
     {
     email: process.env.OPENAI_EMAIL,
     password: process.env.OPENAI_PASSWORD,
-    isGoogleLogin: true
+    isGoogleLogin: true,
+    minimize: true
   }
 )

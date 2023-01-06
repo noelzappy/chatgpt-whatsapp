@@ -1,5 +1,5 @@
 
-const { Client, LocalAuth } = require("whatsapp-web.js");
+const { Client, LocalAuth,  } = require("whatsapp-web.js");
 
 
 // Whatsapp Client

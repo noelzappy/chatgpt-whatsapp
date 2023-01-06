@@ -46,6 +46,8 @@ export const handler = async (message: any, prompt: any) => {
 
         console.log(`[${APP_NAME}] ChatGPT took ` + end + "ms")
 
+        console.log(response)
+
         const { response: responseMessage } = response
 
         const isValid = validateResponse(responseMessage)

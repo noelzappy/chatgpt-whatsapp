@@ -1,7 +1,7 @@
 const qrcode = require("qrcode-terminal");
 import { api } from "./configs/chatAPI";
 import { wClient as client } from "./configs/wClient";
-import { handler as handleMessage  } from "./services/handleMessage";
+import { handler as handleMessage  } from "./controllers/handleMessage";
 
 
 // Prefix check
@@ -16,6 +16,7 @@ const start = async () => {
         await api.initSession()
     } catch (error: any) {
         console.error(`[${APP_NAME}] Failed to authenticate with the ChatGPT API: ` + error.message)
+        api.closeSession()
         process.exit(1)
     }
 
