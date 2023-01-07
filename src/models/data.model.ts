@@ -8,4 +8,9 @@ type DataModel = {
   parent_message_id: string;
 };
 
+export type Recipient = {
+  phone: string;
+  relationship: string;
+};
+
 export default DataModel;

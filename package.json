@@ -9,7 +9,6 @@
   "author": "Emmanuel Yeboah",
   "license": "MIT",
   "dependencies": {
-    "@types/node-cron": "^3.0.7",
     "chatgpt": "^3.0.0",
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
