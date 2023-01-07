@@ -63,3 +63,4 @@ db/*
 .DS_Store
 
 dd.json
+*.key
