@@ -11,4 +11,5 @@ export const api = new ChatGPTAPIBrowser({
   isGoogleLogin: true,
   minimize: true,
   debug: false,
+  executablePath: process.env.CHROMIUM_PATH,
 });
