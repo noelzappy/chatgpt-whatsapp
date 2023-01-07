@@ -1,76 +1,18 @@
-const stringSimilarity = require("string-similarity");
-import { APP_NAME } from "..";
+import { APP_NAME } from "../configs/constants.config";
 import { api } from "../configs/chatAPI.config";
-import data from "../../data.json";
 import {
   getMessagesOfSender,
   saveConversation,
   updateSingleMessageFromSender,
-} from "../services/messages.service";
+} from "../services/data.service";
 import { ChatResponse, SendMessageOptions } from "chatgpt";
-import DataModel from "src/models/data.model";
+import DataModel from "../models/data.model";
+import { Message } from "whatsapp-web.js";
+import { personalMessageHandler } from "src/services/message.service";
+import { prefix } from "../configs/constants.config";
+import Logger from "../utils/logger.util";
 
-// Prefix check
-const prefix = [
-  "Zappy",
-  "ZappyBot",
-  "Zappy-Bot",
-  "Zappy Bot",
-  "zappy",
-  "zappybot",
-  "zappy-bot",
-  "zappy bot",
-  "gpt",
-  "GPT",
-  "gpt3",
-  "GPT3",
-  "gpt-3",
-  "GPT-3",
-  "bot",
-  "Bot",
-  "BOT",
-  ".",
-  "!",
-  "?",
-  "z",
-  "Z",
-  "zap",
-  "Zap",
-  "ZAP",
-];
-
-const personalMessageHandler = async (message: any, prompt: any) => {
-  const wordMatch = {
-    index: -1,
-    value: 0,
-  };
-
-  data.forEach((res: any, index: number) => {
-    const { question } = res;
-    const similarity = stringSimilarity.compareTwoStrings(question, prompt);
-
-    if (similarity > wordMatch.value) {
-      wordMatch.index = index;
-      wordMatch.value = similarity;
-    }
-  });
-
-  if (wordMatch.value > 0.7) {
-    const dataMessage = data[wordMatch.index];
-
-    const { answers } = dataMessage;
-    const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
-
-    console.log(`[${APP_NAME}] Answer to ${message.from}: ${randomAnswer}`);
-
-    message.reply(randomAnswer);
-    return true;
-  }
-
-  return false;
-};
-
-export const handler = async (message: any, p: any) => {
+export const handler = async (message: Message, p: any) => {
   try {
     const start = Date.now();
 
@@ -82,9 +24,7 @@ export const handler = async (message: any, p: any) => {
 
     if (!isPrefix) return;
 
-    console.log(
-      `[${APP_NAME}] Received prompt from ` + message.from + ": " + prompt
-    );
+    Logger.info(`Received prompt from ${message.from}: ${prompt}`);
 
     // Check if the message is a personal message or not and handles it
     const isHandled = await personalMessageHandler(message, prompt);
@@ -138,19 +78,15 @@ export const handler = async (message: any, p: any) => {
       );
     }
 
-    console.log(
-      `[${APP_NAME}] Answer to ${message.from}: ${response.response}`
-    );
+    Logger.info(`Answer to ${message.from}: ${response.response}`);
 
     message.reply(response.response);
 
     const end = Date.now() - start;
 
-    console.log(`[${APP_NAME}] ChatGPT took ` + end + "ms");
+    Logger.info(`ChatGPT took ` + end + "ms");
   } catch (error: any) {
-    console.error(
-      `[${APP_NAME}] Failed to send message to ChatGPT API: ` + error
-    );
+    Logger.error(`Failed to send message to ChatGPT API: ` + error);
     // message.reply("I'm sorry, I'm not available at the moment to reply. I will as soon as possible.")
   }
 };

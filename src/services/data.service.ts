@@ -1,6 +1,6 @@
-import { APP_NAME } from "..";
 import DataModel from "../models/data.model";
 import { db } from "../configs/db.config";
+import Logger from "../utils/logger.util";
 
 function saveConversation(data: DataModel) {
   return new Promise((resolve, reject) => {
@@ -35,13 +35,12 @@ function saveConversation(data: DataModel) {
       ],
       function (error) {
         if (error) {
-          console.error(`[${APP_NAME}] failed to insert row: ` + error);
+          Logger.error(`failed to insert row: ` + error);
           reject(error);
         }
         resolve(this);
-        console.log(
-          `[${APP_NAME}] inserted a data with the ID: ${this.lastID}`
-        );
+
+        Logger.info(`inserted a data with the ID: ${this.lastID}`);
       }
     );
   });

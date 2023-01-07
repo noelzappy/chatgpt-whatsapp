@@ -1,4 +1,4 @@
-import { APP_NAME } from "..";
+import Logger from "..//utils/logger.util";
 
 const fs = require("fs");
 const sqlite3 = require("sqlite3").verbose();
@@ -25,19 +25,20 @@ function createDbConnection() {
   if (fs.existsSync(filepath)) {
     const db = new sqlite3.Database(filepath, (error) => {
       if (error) {
-        return console.error(`[${APP_NAME}] failed to create db: ` + error);
+        return Logger.error(`failed to create db: ` + error);
       }
     });
-    console.log(`[${APP_NAME}] Connection with SQLite has been established`);
+    Logger.info(`Connection with SQLite has been established`);
     return db;
   } else {
     const db = new sqlite3.Database(filepath, (error) => {
       if (error) {
-        return console.error(`[${APP_NAME}] failed to create db: ` + error);
+        return Logger.error(`failed to create db: ` + error);
       }
     });
     createTable(db);
-    console.log(`[${APP_NAME}] Connection with SQLite has been established`);
+
+    Logger.info(`Connection with SQLite has been established`);
     return db;
   }
 }

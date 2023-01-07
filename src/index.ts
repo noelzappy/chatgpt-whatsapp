@@ -1,10 +1,8 @@
 const qrcode = require("qrcode-terminal");
 import { api } from "./configs/chatAPI.config";
-
 import { wClient as client } from "./configs/wClient.config";
 import { handler as handleMessage } from "./controllers/message.controller";
-
-export const APP_NAME = "Zappy BOT";
+import { APP_NAME } from "./configs/constants.config";
 
 // Entrypoint
 const start = async () => {
