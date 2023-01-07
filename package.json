@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx vite-node src/index.ts"
+    "start": "npx vite-node src/index.ts",
+    "prod": "pm2 start ecosystem.config.json --no-daemon"
   },
   "author": "Emmanuel Yeboah",
   "license": "MIT",
@@ -18,5 +19,8 @@
     "sqlite3": "^5.1.4",
     "string-similarity": "^4.0.4",
     "whatsapp-web.js": "^1.18.4"
+  },
+  "devDependencies": {
+    "pm2": "^5.2.2"
   }
 }
