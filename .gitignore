@@ -62,5 +62,4 @@ db/*
 
 .DS_Store
 
-# Ignore personal data
-src/data/recipients.json
+dd.json

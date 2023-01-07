@@ -16,9 +16,12 @@ export const handler = async (message: Message, p: any) => {
   try {
     const start = Date.now();
 
-    const messagePrefix = message.body.split(" ")[0];
+    const messagePrefix = message.body.startsWith(".")
+      ? "."
+      : message.body.split(" ")[0];
 
-    const isPrefix = prefix.includes(messagePrefix);
+    const isPrefix =
+      prefix.includes(messagePrefix) || message.body.startsWith(".");
 
     const prompt = message.body.replace(messagePrefix, "");
 

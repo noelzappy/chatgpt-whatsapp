@@ -1,16 +1,10 @@
 import Logger from "../utils/logger.util";
-import {
-  afternoonGreetingsCron,
-  morningGreetingsCron,
-  eveningGreetingsCron,
-} from "./greetings.cron";
+import { morningGreetingsCron } from "./greetings.cron";
 
 const startCrons = async () => {
   morningGreetingsCron.start();
-  afternoonGreetingsCron.start();
-  eveningGreetingsCron.start();
 
-  Logger.info("Crons started");
+  Logger.info("All Crons started");
 };
 
 export default startCrons;
