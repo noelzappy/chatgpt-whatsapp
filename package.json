@@ -1,13 +1,13 @@
 {
   "name": "whatsapp-chatgpt",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is a WhatsApp bot that uses OpenAI's ChatGPT to respond to user inputs. It also includes a cron that you can setup to allow ChatGPT to generate messages and send to recipients at periodic intervals.",
   "main": "index.js",
   "scripts": {
     "start": "npx vite-node src/index.ts",
     "prod": "pm2 start ecosystem.config.json --no-daemon"
   },
-  "author": "Emmanuel Yeboah",
+  "author": "Emmanuel Yeboah <noelzappy@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chatgpt": "^3.0.0",
