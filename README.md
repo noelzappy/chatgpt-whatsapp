@@ -4,6 +4,11 @@ This project is a WhatsApp bot that uses OpenAI's ChatGPT to respond to user inp
 It also includes a cron that you can setup to allow ChatGPT to generate messages and send to recipients at periodic intervals.
 
 
+# ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) [ChatGPT](https://chat.openai.com) Is facing server overload issues at the moment and this bot may not work well until that is resolved by OpenAI. You can visit [ChatGPT](https://chat.openai.com) to track the status of the issue.
+
+
+
+
 ![photo_2023-01-06 20 06 27](https://user-images.githubusercontent.com/38583057/211094028-9c512d9c-56df-4195-b21b-f588a33a7d79.jpeg)
 
 
