@@ -2,7 +2,7 @@
   "name": "whatsapp-chatgpt",
   "version": "1.0.0",
   "description": "This project is a WhatsApp bot that uses OpenAI's ChatGPT to respond to user inputs. It also includes a cron that you can setup to allow ChatGPT to generate messages and send to recipients at periodic intervals.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "npx vite-node src/index.ts",
     "prod": "pm2 start ecosystem.config.json --no-daemon"
@@ -10,20 +10,19 @@
   "author": "Emmanuel Yeboah <noelzappy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chatgpt": "^3.0.0",
+    "chatgpt": "^3.4.2",
     "cron-time-generator": "^1.3.0",
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
-    "puppeteer": "^19.4.1",
+    "puppeteer": "^19.5.2",
     "qrcode-terminal": "^0.12.0",
     "sqlite3": "^5.1.4",
     "string-similarity": "^4.0.4",
-    "whatsapp-web.js": "^1.18.4"
+    "whatsapp-web.js": "^1.19.2"
   },
   "devDependencies": {
     "pm2": "^5.2.2"
   },
-  
   "keywords": [
     "openai",
     "chatgpt",
@@ -39,6 +38,8 @@
     "conversational ai",
     "ai",
     "ml",
-    "bot"
+    "bot",
+    "chatgpt",
+    "chatgpt whatsapp bot"
   ]
 }

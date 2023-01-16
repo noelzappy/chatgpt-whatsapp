@@ -25,4 +25,10 @@ export const prefix = [
   "zap",
   "Zap",
   "ZAP",
+  "zappy,",
+  "Zappy,",
+  "ZAPPY,",
+  "zappy?",
+  "Zappy?",
+  "ZAPPY?",
 ];

@@ -547,10 +547,10 @@ charm@~0.1.1:
   resolved "https://registry.yarnpkg.com/charm/-/charm-0.1.2.tgz#06c21eed1a1b06aeb67553cdc53e23274bac2296"
   integrity sha512-syedaZ9cPe7r3hoQA9twWYKu5AIyCswN5+szkmPBe9ccdLrj4bYaCnLVPTLd2kgVRc7+zoX4tyPgRnFKCj5YjQ==
 
-chatgpt@^3.0.0:
-  version "3.3.10"
-  resolved "https://registry.yarnpkg.com/chatgpt/-/chatgpt-3.3.10.tgz#e80a4629a5823d8e1d43a345de3d002cf55e181c"
-  integrity sha512-1LAjP5NjLZfSd25G5hQcvTp9BAK/kludcv+4T/3s2diCYIWvc0tETVcvurgXwINatELAZMnVrbLxtltgU/GZrw==
+chatgpt@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/chatgpt/-/chatgpt-3.4.2.tgz#76cedca35ae198fcce0157a61e8abf9089deb526"
+  integrity sha512-w/4IfYrBW8nZ01tI8kG9baqS5VUab3Ae9iD/pk+enr2Gn9tGE7MWLoNWs+qb/X3uCvmj48yEqCk71DycFgHA2g==
   dependencies:
     delay "^5.0.0"
     eventsource-parser "^0.0.5"
@@ -2406,10 +2406,10 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-puppeteer-core@19.4.1:
-  version "19.4.1"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.4.1.tgz#f4875943841ebdb6fc2ad7a475add958692b0237"
-  integrity sha512-JHIuqtqrUAx4jGOTxXu4ilapV2jabxtVMA/e4wwFUMvtSsqK4nVBSI+Z1SKDoz7gRy/JUIc8WzmfocCa6SIZ1w==
+puppeteer-core@19.5.2:
+  version "19.5.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.5.2.tgz#9b454b0ef89d3f07e20158dd4ced6ebd85d4dadb"
+  integrity sha512-Rqk+3kqM+Z2deooTYqcYt8lRtGffJdifWa9td9nbJSjhANWsFouk8kLBNUKycewCCFHM8TZUKS0x28OllavW2A==
   dependencies:
     cross-fetch "3.1.5"
     debug "4.3.4"
@@ -2496,16 +2496,16 @@ puppeteer@^13.0.0:
     unbzip2-stream "1.4.3"
     ws "8.5.0"
 
-puppeteer@^19.4.1:
-  version "19.4.1"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.4.1.tgz#cac7d3f0084badebb8ebacbe6f4d7262e7f21818"
-  integrity sha512-PCnrR13B8A+VSEDXRmrNXRZbrkF1tfsI1hKSC7vs13eNS6CUD3Y4FA8SF8/VZy+Pm1kg5AggJT2Nu3HLAtGkFg==
+puppeteer@^19.5.2:
+  version "19.5.2"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.5.2.tgz#f09ed55d5263cacaac4c5818d0d884b1e1d938b0"
+  integrity sha512-xlqRyrhXhVH114l79Y0XqYXUVG+Yfw4sKlvN55t8Y9DxtA5fzI1uqF8SVXbWK5DUMbD6Jo4lpixTZCTTZGD05g==
   dependencies:
     cosmiconfig "8.0.0"
     https-proxy-agent "5.0.1"
     progress "2.0.3"
     proxy-from-env "1.1.0"
-    puppeteer-core "19.4.1"
+    puppeteer-core "19.5.2"
 
 qrcode-terminal@^0.12.0:
   version "0.12.0"
@@ -3156,10 +3156,10 @@ webidl-conversions@^3.0.0:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
   integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
 
-whatsapp-web.js@^1.18.4:
-  version "1.18.4"
-  resolved "https://registry.yarnpkg.com/whatsapp-web.js/-/whatsapp-web.js-1.18.4.tgz#f4904b4871af252da68142105e906522be0ace30"
-  integrity sha512-Dqu6Q37tDDAcVJ44aMdRE76sI/9rBCUG+NTz1Kxh2w4obX2WtpoRetilxqgx1r4+pFUl58Lf21wGOEwPZ1pT/A==
+whatsapp-web.js@^1.19.2:
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/whatsapp-web.js/-/whatsapp-web.js-1.19.2.tgz#91fca99ea0e78f17a223aafff2edcffea5049560"
+  integrity sha512-ibEKy0KJsmH1rH9DKXfWk9vCnP/Dw/nZF9Ax3M7LCYtumSC+fiXMRF3BMVu7E75NRdv1pzjw4v05/Oq9aYY6aA==
   dependencies:
     "@pedroslopez/moduleraid" "^5.0.2"
     fluent-ffmpeg "^2.1.2"
