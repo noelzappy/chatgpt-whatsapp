@@ -29,3 +29,25 @@ export const prefixes = [
   "ZAPPY?",
   "zappy!",
 ];
+
+export const removablePrefixes = [
+  "Zappy",
+  "ZappyBot",
+  "Zappy-Bot",
+  "Zappy Bot",
+  "zappy",
+  "zappybot",
+  "zappy-bot",
+  "zappy bot",
+  "!",
+  "??",
+  "..",
+  "...",
+  "zappy,",
+  "Zappy,",
+  "ZAPPY,",
+  "zappy?",
+  "Zappy?",
+  "ZAPPY?",
+  "zappy!",
+];

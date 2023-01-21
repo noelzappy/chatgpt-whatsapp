@@ -1,5 +1,5 @@
 import Prefix from "../models/prefix.model";
-import { prefixes } from "../configs/constants.config";
+import { prefixes, removablePrefixes } from "../configs/constants.config";
 
 export const getPrefix = (message: string): Prefix => {
   const containsPrefix = prefixes.some((prefix) => message.includes(prefix));
@@ -8,7 +8,11 @@ export const getPrefix = (message: string): Prefix => {
 
   const prefix = prefixes.find((prefix) => message.includes(prefix));
 
-  const messageWithoutPrefix = message.replace(prefix, "").trim();
+  const isRemovable = removablePrefixes.includes(prefix);
+
+  const messageWithoutPrefix = isRemovable
+    ? message.replace(prefix, "").trim()
+    : message;
 
   return { isPrefix: true, message: messageWithoutPrefix, prefix };
 };
