@@ -1,4 +1,3 @@
-import { APP_NAME } from "../configs/constants.config";
 import { api } from "../configs/chatAPI.config";
 import {
   getMessagesOfSender,
@@ -9,23 +8,19 @@ import { ChatResponse, SendMessageOptions } from "chatgpt";
 import DataModel from "../models/data.model";
 import { Message } from "whatsapp-web.js";
 import { personalMessageHandler } from "src/services/message.service";
-import { prefix } from "../configs/constants.config";
 import Logger from "../utils/logger.util";
+import { getPrefix } from "../utils/prefix.util";
+import Prefix from "../models/prefix.model";
 
 export const handler = async (message: Message, p: any) => {
   try {
     const start = Date.now();
 
-    const messagePrefix = message.body.startsWith(".")
-      ? "."
-      : message.body.split(" ")[0];
+    const prefix: Prefix = getPrefix(message.body);
 
-    const isPrefix =
-      prefix.includes(messagePrefix) || message.body.startsWith(".");
+    const prompt = prefix.message;
 
-    const prompt = message.body.replace(messagePrefix, "");
-
-    if (!isPrefix) return;
+    if (!prefix.isPrefix) return;
 
     Logger.info(`Received prompt from ${message.from}: ${prompt}`);
 

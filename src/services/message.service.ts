@@ -28,7 +28,7 @@ export const personalMessageHandler = async (
     }
   });
 
-  if (wordMatch.value > 0.7) {
+  if (wordMatch.value > 0.5) {
     const dataMessage = responses[wordMatch.index];
 
     const { answers } = dataMessage;
@@ -49,7 +49,7 @@ export const sendMorningGreetings = async () => {
       const phone = recipient.phone + "@c.us";
 
       // Ask ChatGPT for a greeting based on the recipient's relationship
-      const prompt = `Give a sweet good morning text to send my ${recipient.relationship}`;
+      const prompt = `Give a sweet good morning text to send my ${recipient.relationship}. It should be 10 words or less.`;
       const response: ChatResponse = await api.sendMessage(prompt);
 
       // replace all quotation marks with nothing

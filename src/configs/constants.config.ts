@@ -1,5 +1,5 @@
 export const APP_NAME = "Zappy BOT";
-export const prefix = [
+export const prefixes = [
   "Zappy",
   "ZappyBot",
   "Zappy-Bot",
