@@ -86,7 +86,8 @@ export const handler = async (message: Message, p: any) => {
   } catch (error: ChatError | any) {
     Logger.error(`Failed to send message to ChatGPT API: ` + error);
 
-    const sendErrorResponse = error?.error?.statusCode === 429;
+    console.log(error);
+    const sendErrorResponse = JSON.stringify(error).includes("429");
     if (sendErrorResponse) {
       message.reply(
         "I'm sorry, I'm not available at the moment to reply. Please try again after an hour."
