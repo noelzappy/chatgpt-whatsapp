@@ -4,7 +4,7 @@ import {
   saveConversation,
   updateSingleMessageFromSender,
 } from "../services/data.service";
-import { ChatResponse, SendMessageOptions } from "chatgpt";
+import { ChatError, ChatResponse, SendMessageOptions } from "chatgpt";
 import DataModel from "../models/data.model";
 import { Message } from "whatsapp-web.js";
 import { personalMessageHandler } from "src/services/message.service";
@@ -83,8 +83,14 @@ export const handler = async (message: Message, p: any) => {
     const end = Date.now() - start;
 
     Logger.info(`ChatGPT took ` + end + "ms");
-  } catch (error: any) {
+  } catch (error: ChatError | any) {
     Logger.error(`Failed to send message to ChatGPT API: ` + error);
-    // message.reply("I'm sorry, I'm not available at the moment to reply. I will as soon as possible.")
+
+    const sendErrorResponse = error?.error?.statusCode === 429;
+    if (sendErrorResponse) {
+      message.reply(
+        "I'm sorry, I'm not available at the moment to reply. Please try again after an hour."
+      );
+    }
   }
 };
