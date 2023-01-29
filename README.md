@@ -81,10 +81,6 @@ To use the bot, simply send a message with one of the prefixes below followed by
   "bot",
   "Bot",
   "BOT",
-  "!!",
-  "??",
-  "..",
-  "...",
   "zappy,",
   "Zappy,",
   "ZAPPY,",
@@ -100,7 +96,7 @@ To change the prefixes, update the array located inside `src/configs/constants.c
 
 `zappy What is the meaning of life?`
 <br/>
-`. What is the meaning of life?`
+`bot What is the meaning of life?`
 
 The bot only responds to messages that are received by you, not sent. It will also work with group messages.
 
