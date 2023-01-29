@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-chatgpt",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "This project is a WhatsApp bot that uses OpenAI's ChatGPT to respond to user inputs. It also includes a cron that you can setup to allow ChatGPT to generate messages and send to recipients at periodic intervals.",
   "main": "index.ts",
   "scripts": {
