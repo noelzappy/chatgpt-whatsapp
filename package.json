@@ -10,15 +10,15 @@
   "author": "Emmanuel Yeboah <noelzappy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chatgpt": "^3.5.0",
-    "cron-time-generator": "^1.3.0",
+    "chatgpt": "^4.0.2",
+    "cron-time-generator": "^1.3.2",
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
-    "puppeteer": "^19.5.2",
+    "puppeteer": "^19.6.3",
     "qrcode-terminal": "^0.12.0",
     "sqlite3": "^5.1.4",
     "string-similarity": "^4.0.4",
-    "whatsapp-web.js": "^1.19.2"
+    "whatsapp-web.js": "^1.19.3"
   },
   "devDependencies": {
     "pm2": "^5.2.2"
