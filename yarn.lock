@@ -461,10 +461,10 @@ charm@~0.1.1:
   resolved "https://registry.yarnpkg.com/charm/-/charm-0.1.2.tgz#06c21eed1a1b06aeb67553cdc53e23274bac2296"
   integrity sha512-syedaZ9cPe7r3hoQA9twWYKu5AIyCswN5+szkmPBe9ccdLrj4bYaCnLVPTLd2kgVRc7+zoX4tyPgRnFKCj5YjQ==
 
-chatgpt@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/chatgpt/-/chatgpt-4.0.4.tgz#fae141c1c29c628573bbd07c22b9c44a2b01547d"
-  integrity sha512-3Z9NOAfBvz61HTNDl3ghp52PQERwOjjlnUfcdIBBNMEsGPBjeHRzZVs87Yz+3JaysGcHFU7WpT3KrM4gSBJcww==
+chatgpt@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/chatgpt/-/chatgpt-4.1.0.tgz#7b01908ce1e50607c65eef463fef2b03dd09e225"
+  integrity sha512-nsgBmo3iengL+jpqNRewM2ktEkVZkY0Y/fYyg+hwVNpmpWthZjc8qHq7xG0kqc45P0Zufel69alO+E4jBh8itg==
   dependencies:
     eventsource-parser "^0.0.5"
     gpt-3-encoder "^1.1.4"
