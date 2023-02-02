@@ -10,11 +10,10 @@
   "author": "Emmanuel Yeboah <noelzappy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chatgpt": "^4.0.2",
+    "chatgpt": "^4.0.4",
     "cron-time-generator": "^1.3.2",
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
-    "puppeteer": "^19.6.3",
     "qrcode-terminal": "^0.12.0",
     "sqlite3": "^5.1.4",
     "string-similarity": "^4.0.4",

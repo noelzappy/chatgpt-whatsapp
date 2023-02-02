@@ -4,7 +4,7 @@ import {
   saveConversation,
   updateSingleMessageFromSender,
 } from "../services/data.service";
-import { ChatError, ChatResponse, SendMessageOptions } from "chatgpt";
+import { SendMessageOptions } from "chatgpt";
 import DataModel from "../models/data.model";
 import { Message } from "whatsapp-web.js";
 import { personalMessageHandler } from "src/services/message.service";
@@ -39,11 +39,10 @@ export const handler = async (message: Message, p: any) => {
       chatOptions = {
         conversationId: prevConversation[0].conversation_id,
         parentMessageId: prevConversation[0].parent_message_id,
-        action: "next",
       };
     }
 
-    let response: ChatResponse;
+    let response: any;
 
     if (hasPreviousConversation || chatOptions) {
       response = await api.sendMessage(prompt, chatOptions);
@@ -57,12 +56,12 @@ export const handler = async (message: Message, p: any) => {
       // Save the conversation
       const conversation: DataModel = {
         last_message: prompt,
-        message_id: response.messageId,
+        message_id: response.id,
         conversation_id: response.conversationId,
         sender_id: message.from,
-        last_response: response.response,
+        last_response: response.text,
         last_message_timestamp: new Date().toISOString(),
-        parent_message_id: response.messageId,
+        parent_message_id: response.parentMessageId,
       };
       await saveConversation(conversation);
     } else {
@@ -70,23 +69,25 @@ export const handler = async (message: Message, p: any) => {
       await updateSingleMessageFromSender(
         message.from,
         prompt,
-        response.response,
-        response.messageId,
+        response.text,
+        response.id,
         new Date().toISOString()
       );
     }
 
-    Logger.info(`Answer to ${message.from}: ${response.response}`);
+    Logger.info(`Answer to ${message.from}: ${response.text}`);
 
-    message.reply(response.response);
+    message.reply(response.text);
 
     const end = Date.now() - start;
 
     Logger.info(`ChatGPT took ` + end + "ms");
-  } catch (error: ChatError | any) {
+  } catch (error: any) {
     Logger.error(`Failed to send message to ChatGPT API: ` + error);
 
-    const sendErrorResponse = JSON.stringify(error).includes("429");
+    const sendErrorResponse = JSON.stringify(error).includes(
+      "429" || "SQLITE" || "ECONNRESET"
+    );
     if (sendErrorResponse) {
       message.reply(
         "I'm sorry, I'm not available at the moment to reply. Please try again after an hour."

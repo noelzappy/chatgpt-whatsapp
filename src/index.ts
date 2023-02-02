@@ -1,5 +1,4 @@
 const qrcode = require("qrcode-terminal");
-import { api } from "./configs/chatAPI.config";
 import { wClient as client } from "./configs/wClient.config";
 import { handler as handleMessage } from "./controllers/message.controller";
 import Logger from "./utils/logger.util";
@@ -7,18 +6,6 @@ import startCrons from "./crons";
 
 // Entrypoint
 const start = async () => {
-  // Ensure the API is properly authenticated
-  try {
-    await api.initSession();
-  } catch (error: any) {
-    Logger.error(
-      `Failed to authenticate with the ChatGPT API: ${error.message}`
-    );
-
-    api.closeSession();
-    process.exit(1);
-  }
-
   try {
     // Whatsapp auth
     client.on("qr", (qr: string) => {
