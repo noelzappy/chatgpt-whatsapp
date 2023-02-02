@@ -86,7 +86,7 @@ export const handler = async (message: Message, p: any) => {
     Logger.error(`Failed to send message to ChatGPT API: ` + error);
 
     const sendErrorResponse = JSON.stringify(error).includes(
-      "429" || "404" 
+      "429" || "404" || "500"
     );
     if (sendErrorResponse) {
       message.reply(
