@@ -3,11 +3,12 @@ type DataModel = {
   message_id: string;
   conversation_id: string;
   sender_id: string;
+  author_id: string;
+  author_name: string;
   last_response: string;
   last_message_timestamp: string;
   parent_message_id: string;
-  notifyName: string;
-  group_chat_id: string
+  is_group_chat: string;
 };
 
 export type Recipient = {

@@ -14,9 +14,12 @@ function createTable(db) {
     message_id TEXT NOT NULL UNIQUE,
     conversation_id TEXT NOT NULL UNIQUE,
     sender_id TEXT NOT NULL UNIQUE,
+    author_id TEXT,
+    author_name TEXT,
     last_response TEXT NOT NULL,
     last_message_timestamp TEXT NOT NULL,
-    parent_message_id TEXT NOT NULL UNIQUE
+    parent_message_id TEXT NOT NULL UNIQUE,
+    is_group_chat TEXT NOT NULL
   );
 `);
 }

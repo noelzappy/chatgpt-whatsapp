@@ -2,7 +2,7 @@ import Prefix from "../models/prefix.model";
 import { prefixes, removablePrefixes } from "../configs/constants.config";
 
 export const getPrefix = (message: string): Prefix => {
-  const containsPrefix = prefixes.some((prefix) => message.includes(prefix));
+  const containsPrefix = prefixes.some((prefix) => message.startsWith(prefix));
 
   if (!containsPrefix) return { isPrefix: false, message, prefix: "" };
 

@@ -4,15 +4,15 @@ export const isGroupChat = (msg: Message) => {
     return !!msg.author;
 }
 
-export const getSenderId = (msg: Message) => {
+export const getAuthorId = (msg: Message) => {
     return isGroupChat(msg) ? msg.author : msg.from;
 }
 
-export const getGroupChatId = (msg: Message) => {
-    return isGroupChat(msg) ? msg.from : null;
+export const getSenderId = (msg: Message) => {
+    return msg.from;
 }
 
-export const getSenderName = (msg: Message) => {
+export const getAuthorName = (msg: Message) => {
     // @ts-ignore
     return isGroupChat(msg) ? msg.rawData.notifyName : null;
 }
