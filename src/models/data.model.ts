@@ -6,6 +6,8 @@ type DataModel = {
   last_response: string;
   last_message_timestamp: string;
   parent_message_id: string;
+  notifyName: string;
+  group_chat_id: string
 };
 
 export type Recipient = {

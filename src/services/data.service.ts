@@ -12,6 +12,8 @@ function saveConversation(data: DataModel) {
       last_response,
       last_message_timestamp,
       parent_message_id,
+      notifyName,
+      group_chat_id
     } = data;
 
     db.run(
@@ -22,8 +24,10 @@ function saveConversation(data: DataModel) {
     sender_id,
     last_response,
     last_message_timestamp,
-    parent_message_id
-    ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    parent_message_id,
+    notifyName,
+    group_chat_id
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         last_message,
         message_id,
@@ -32,6 +36,8 @@ function saveConversation(data: DataModel) {
         last_response,
         last_message_timestamp,
         parent_message_id,
+        notifyName,
+        group_chat_id
       ],
       function (error) {
         if (error) {

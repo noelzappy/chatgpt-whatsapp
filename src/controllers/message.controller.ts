@@ -11,10 +11,13 @@ import { personalMessageHandler } from "src/services/message.service";
 import Logger from "../utils/logger.util";
 import { getPrefix } from "../utils/prefix.util";
 import Prefix from "../models/prefix.model";
+import {getGroupChatId, getSenderId, getSenderName, isGroupChat} from "../utils/message.util"
 
 export const handler = async (message: Message, p: any) => {
   try {
     const start = Date.now();
+
+    Logger.info(JSON.stringify(message, null, 2));
 
     const prefix: Prefix = getPrefix(message.body);
 
@@ -22,7 +25,13 @@ export const handler = async (message: Message, p: any) => {
 
     if (!prefix.isPrefix) return;
 
-    Logger.info(`Received prompt from ${message.from}: ${prompt}`);
+    if(isGroupChat(message)){
+      // @ts-ignore
+      Logger.info(`Received prompt from Group Chat ${getGroupChatId(message)} author ${getSenderId(message)}(${getSenderName(message)}): ${prompt}`);
+    }else {
+      Logger.info(`Received prompt from ${message.from}: ${prompt}`);
+    }
+
 
     // Check if the message is a personal message or not and handles it
     const isHandled = await personalMessageHandler(message, prompt);
@@ -58,16 +67,18 @@ export const handler = async (message: Message, p: any) => {
         last_message: prompt,
         message_id: response.id,
         conversation_id: response.conversationId,
-        sender_id: message.from,
+        sender_id: getSenderId(message),
         last_response: response.text,
         last_message_timestamp: new Date().toISOString(),
         parent_message_id: response.parentMessageId,
+        notifyName: getSenderName(message),
+        group_chat_id: getGroupChatId(message)
       };
       await saveConversation(conversation);
     } else {
       // Update the conversation
       await updateSingleMessageFromSender(
-        message.from,
+        getSenderId(message),
         prompt,
         response.text,
         response.id,
@@ -75,7 +86,12 @@ export const handler = async (message: Message, p: any) => {
       );
     }
 
-    Logger.info(`Answer to ${message.from}: ${response.text}`);
+    if(isGroupChat(message)){
+      Logger.info(`Answer to Group Chat ${getGroupChatId(message)} author ${getSenderId(message)}(${getSenderName(message)}): ${response.text}`);
+    }else {
+      Logger.info(`Answer to Private Chat ${getSenderId(message)}: ${response.text}`);
+    }
+
 
     message.reply(response.text);
 
