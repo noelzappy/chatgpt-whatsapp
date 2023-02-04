@@ -30,11 +30,7 @@ cd chatgpt-whatsapp
 yarn install
 ```
 
-### 3. Create `.env` file and update the email and passwords with OpenAI credentials
-
-If your account is Google SignedIn, then the password should be your Google Account's pssword.
-Also based on whether your account is Google SignIn or not, check the `src/configs/chatAPI.config.ts`
-and update the `isGoogleLogin` option passed do the `ChatGPTAPIBrowser`.
+### 3. Create `.env` file and update the update the OpenAI API keys.
 
 ```bash
 cp .env.example .env
