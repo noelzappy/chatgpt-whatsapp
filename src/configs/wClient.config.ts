@@ -1,10 +1,9 @@
-
-const { Client, LocalAuth,  } = require("whatsapp-web.js");
-
+const { Client, LocalAuth } = require("whatsapp-web.js");
 
 // Whatsapp Client
 export const wClient = new Client({
-     authStrategy: new LocalAuth(),
-})
-
-
+  authStrategy: new LocalAuth(),
+  puppeteer: {
+    args: ["--no-sandbox"],
+  },
+});
