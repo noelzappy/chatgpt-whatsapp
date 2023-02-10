@@ -6,7 +6,7 @@ import {
 } from "../services/data.service";
 import { SendMessageOptions } from "chatgpt";
 import DataModel from "../models/data.model";
-import { Message } from "whatsapp-web.js";
+import { Chat, Message } from "whatsapp-web.js";
 import { personalMessageHandler } from "src/services/message.service";
 import Logger from "../utils/logger.util";
 import { getPrefix } from "../utils/prefix.util";
@@ -20,7 +20,9 @@ export const handler = async (message: Message, p: any) => {
 
     const prompt = prefix.message;
 
-    if (!prefix.isPrefix) return;
+    const chat: Chat = await message.getChat();
+
+    if (!prefix.isPrefix && chat.isGroup) return;
 
     Logger.info(`Received prompt from ${message.from}: ${prompt}`);
 
