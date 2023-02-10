@@ -36,7 +36,7 @@ export const handler = async (message: Message, p: any) => {
     const promptLength = countWords(prompt);
     if (promptLength > 10) {
       return message.reply(
-        "To use this bot, please send a message with a maximum of 10 words.\nFor longer messages please visit \nhttps://chat.openai.com/ \nor contact Zappy for a custom solution."
+        "To use this bot, please send a message with a maximum of 10 words.\nFor longer messages please visit \nhttps://chat.openai.com/ \nOr contact Zappy for a custom solution."
       );
     }
 
