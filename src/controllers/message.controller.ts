@@ -32,7 +32,8 @@ export const handler = async (message: Message, p: any) => {
     const isHandled = await personalMessageHandler(message, prompt);
     if (isHandled) return;
 
-    if (prompt.length > 10) {
+    const promptLength = prompt.replace(/\s/g, "").length;
+    if (promptLength > 10) {
       return message.reply(
         "To use this bot, please send a message with a maximum of 10 characters.\n For longer messages please visit https://chat.openai.com/ or contact Zappy for a custom solution."
       );
