@@ -49,15 +49,15 @@ and the `responses.json` files to your preferences.
 yarn start
 ```
 
-### 5. A browser opens, complete the captcha and click login
+### 5. Scan the QR Code with Whatsapp (Link a device)
 
-### 6. Scan the QR Code with Whatsapp (Link a device)
-
-### 7. Now you're ready to go :)
+### 6. Now you're ready to go :)
 
 ## Usage
 
-To use the bot, simply send a message with one of the prefixes below followed by your question or message.
+The bot will now respond to all messages you receive.
+
+To use the bot in group chats, simply mention the bot's name or any of the prefixes listed below in your message.
 
 ```
   "Zappy",
