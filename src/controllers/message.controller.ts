@@ -11,6 +11,7 @@ import { personalMessageHandler } from "src/services/message.service";
 import Logger from "../utils/logger.util";
 import { getPrefix } from "../utils/prefix.util";
 import Prefix from "../models/prefix.model";
+import { countWords } from "../utils/misc";
 
 export const handler = async (message: Message, p: any) => {
   try {
@@ -32,7 +33,7 @@ export const handler = async (message: Message, p: any) => {
     const isHandled = await personalMessageHandler(message, prompt);
     if (isHandled) return;
 
-    const promptLength = prompt.replace(/\s/g, "").length;
+    const promptLength = countWords(prompt);
     if (promptLength > 10) {
       return message.reply(
         "To use this bot, please send a message with a maximum of 10 characters.\n For longer messages please visit https://chat.openai.com/ or contact Zappy for a custom solution."
