@@ -16,19 +16,27 @@ export const handler = async (message: Message, p: any) => {
   try {
     const start = Date.now();
 
-    const prefix: Prefix = getPrefix(message.body);
-
-    const prompt = prefix.message;
-
     const chat: Chat = await message.getChat();
 
+    const prefix: Prefix = getPrefix(message.body);
+
+    const prompt = prefix.message.trim();
+
     if (!prefix.isPrefix && chat.isGroup) return;
+
+    chat.sendStateTyping();
 
     Logger.info(`Received prompt from ${message.from}: ${prompt}`);
 
     // Check if the message is a personal message or not and handles it
     const isHandled = await personalMessageHandler(message, prompt);
     if (isHandled) return;
+
+    if (prompt.length > 10) {
+      return message.reply(
+        "To use this bot, please send a message with a maximum of 10 characters.\n For longer messages please visit https://chat.openai.com/ or contact Zappy for a custom solution."
+      );
+    }
 
     // Get previous conversations
     const prevConversation: any = await getMessagesOfSender(message.from);
@@ -37,10 +45,29 @@ export const handler = async (message: Message, p: any) => {
     let hasPreviousConversation: boolean = false;
 
     if (prevConversation && prevConversation.length > 0) {
+      const conversation = prevConversation[0];
+
+      const lastMessageTimestamp = new Date(
+        conversation.last_message_timestamp
+      );
+
+      const now = new Date();
+
+      const diff = Math.abs(now.getTime() - lastMessageTimestamp.getTime());
+
+      const diffMinutes = Math.ceil(diff / (1000 * 60));
+
+      if (diffMinutes < 1) {
+        // 1 minutes
+        return message.reply(
+          "Due to the high volume of messages, I'm not able to reply to you right now. Please try again after a few minutes."
+        );
+      }
+
       hasPreviousConversation = true;
       chatOptions = {
-        conversationId: prevConversation[0].conversation_id,
-        parentMessageId: prevConversation[0].parent_message_id,
+        conversationId: conversation.conversation_id,
+        parentMessageId: conversation.parent_message_id,
       };
     }
 
