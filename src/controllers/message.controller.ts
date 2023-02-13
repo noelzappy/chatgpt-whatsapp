@@ -34,7 +34,7 @@ export const handler = async (message: Message, p: any) => {
     if (isHandled) return;
 
     const promptLength = countWords(prompt);
-    if (promptLength > 10) {
+    if (promptLength > 50) {
       return message.reply(
         "MAXIMUM OF 10 WORDS PER MESSAGE ONLY.\nFor longer messages please visit \nhttps://chat.openai.com/ \nOr contact Zappy for a custom solution."
       );
