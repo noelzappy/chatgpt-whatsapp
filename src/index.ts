@@ -21,9 +21,13 @@ const start = async () => {
 
     // Whatsapp message
     client.on("message", async (message: any) => {
-      if (message.body.length == 0) return;
-      if (message.from == "status@broadcast") return;
-      await handleMessage(message, message.body);
+      try {
+        if (message.body.length == 0) return;
+        if (message.from == "status@broadcast") return;
+        await handleMessage(message, message.body);
+      } catch (error) {
+        Logger.error(error);
+      }
     });
 
     client.initialize();
