@@ -39,7 +39,7 @@ const handler = async (message: Message): Promise<void> => {
     const end = Date.now() - start;
 
     Logger.info(`ChatGPT took ` + end + 'ms');
-  } catch (error: any) {
+  } catch (error) {
     Logger.error(`Failed to send message to ChatGPT API: ` + error);
 
     message.reply(

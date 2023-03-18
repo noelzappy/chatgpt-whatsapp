@@ -30,5 +30,3 @@ export const getPrefix = (message: string): TPrefix => {
 
   return pref;
 };
-
-export const timer = (ms) => new Promise((res) => setTimeout(res, ms));
