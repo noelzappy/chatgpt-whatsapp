@@ -1,20 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "module": "esnext",
+    "target": "ES2022",
+    "module": "CommonJS",
+    "lib": ["ES2022"],
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "typeRoots": ["@types", "./node_modules/@types"],
     "baseUrl": ".",
     "outDir": "build",
-    "noEmit": true
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "esModuleInterop": true
   },
-  "exclude": ["node_modules", "build"],
-  "include": ["**/*.ts"]
+  "include": ["src/**/*", "__tests__/**/*"]
 }
