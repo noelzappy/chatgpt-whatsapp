@@ -1,7 +1,6 @@
 # ChatGPT Whatsapp Chat Bot
 
-This project is a WhatsApp bot that uses OpenAI's ChatGPT to respond to user inputs.
-It also includes a cron that you can setup to allow ChatGPT to generate messages and send to recipients at periodic intervals.
+This project is a WhatsApp bot that uses OpenAI's ChatGPT (GPT-4) to respond to user inputs.
 
 ![photo_2023-01-06 20 06 27](https://user-images.githubusercontent.com/38583057/211094028-9c512d9c-56df-4195-b21b-f588a33a7d79.jpeg)
 
@@ -30,7 +29,7 @@ cd chatgpt-whatsapp
 yarn install
 ```
 
-### 3. Create `.env` file and update the update the OpenAI API keys.
+### 3. Create `.env` file and update the update the OpenAI API keys and Organization ID
 
 ```bash
 cp .env.example .env
@@ -41,9 +40,6 @@ cp .env.example .env
 ```
 
 ### 4. Start the Bot.
-
-Please check the `src/data` folder and update the values stored in the `recipients.json`
-and the `responses.json` files to your preferences.
 
 ```bash
 yarn start
@@ -86,29 +82,18 @@ To use the bot in group chats, simply mention the bot's name or any of the prefi
   "zappy!",
 ```
 
-To change the prefixes, update the array located inside `src/configs/constants.config.ts`
+To change the prefixes, update the array located inside `src/configs/constants.ts`
 
 ## Example
 
-`zappy What is the meaning of life?`
+`What is the meaning of life?`
 <br/>
 `bot What is the meaning of life?`
 
 The bot only responds to messages that are received by you, not sent. It will also work with group messages.
-
-# Crons
-
-The crons are used to schedule periodic messages to contacts defined inside the `src/data/recipients.json` file.
-Currently it includes one cron that will generate a good morning text from ChatGPT and send that message your recipients every Tuesday at `9:10AM`
-You can find the service located in `src/services/message.service.ts`. You can add as many crons that fit your need.
-
-# Troubleshooting
-
-Incase you get an `sqlite` related error, Ensure you have a folder called `db` created at the root of the project,
-at the same level as the `src` folder. This is used to store an `sqlite` database that is used to store a conversation's context
-which will enable you to ask follow up questions to the ChatGPT
+The bot will respond to all private messages you receive and only messages with the prefixes in group chats.
+To change the OpenAI model being used, update the `OPENAI_MODEL` variable in the `config/constants.ts` file.
 
 ## Used libraries
 
 - https://github.com/pedroslopez/whatsapp-web.js
-- https://github.com/transitive-bullshit/chatgpt-api
