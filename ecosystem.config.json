@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "chatgtp-whatsapp",
-      "script": "npm run build:release && npm run start",
+      "script": "npm run start",
       "instances": 1,
       "autorestart": true,
       "watch": false,
