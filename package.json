@@ -27,6 +27,7 @@
   "scripts": {
     "dev": "npx nodemon src/main.ts",
     "start": "node build/src/main.js",
+    "start:prod": "pm2 start ecosystem.config.json --no-daemon",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
@@ -35,7 +36,8 @@
     "lint": "eslint . --ext .ts --ext .mts",
     "test": "jest --coverage",
     "prettier": "prettier --config .prettierrc --write .",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+
   },
   "author": "Emmanuel Yeboah <noelzappy@gmail.com>",
   "license": "MIT",
