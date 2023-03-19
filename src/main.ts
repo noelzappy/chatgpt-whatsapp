@@ -20,9 +20,10 @@ const start = async (): Promise<void> => {
     // Whatsapp message
     client.on('message', async (message: Message) => {
       try {
-        if (message.body.length == 0) return;
-        if (message.from == 'status@broadcast') return;
-
+        if (message.body.length == 0 || message.from == 'status@broadcast') {
+          return;
+        }
+        
         await handleMessage(message);
       } catch (error) {
         Logger.error(error);
