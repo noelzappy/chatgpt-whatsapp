@@ -1,4 +1,4 @@
-# ChatGPT Whatsapp Chat Bot
+# Project Description
 
 This project is a WhatsApp bot that uses OpenAI's ChatGPT (GPT-4) to respond to user inputs.
 
