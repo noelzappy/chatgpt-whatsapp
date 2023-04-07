@@ -56,14 +56,6 @@ The bot will now respond to all messages you receive.
 To use the bot in group chats, simply mention the bot's name or any of the prefixes listed below in your message.
 
 ```
-  "Zappy",
-  "ZappyBot",
-  "Zappy-Bot",
-  "Zappy Bot",
-  "zappy",
-  "zappybot",
-  "zappy-bot",
-  "zappy bot",
   "gpt",
   "GPT",
   "gpt3",
@@ -73,13 +65,6 @@ To use the bot in group chats, simply mention the bot's name or any of the prefi
   "bot",
   "Bot",
   "BOT",
-  "zappy,",
-  "Zappy,",
-  "ZAPPY,",
-  "zappy?",
-  "Zappy?",
-  "ZAPPY?",
-  "zappy!",
 ```
 
 To change the prefixes, update the array located inside `src/configs/constants.ts`
@@ -91,7 +76,7 @@ To change the prefixes, update the array located inside `src/configs/constants.t
 `bot What is the meaning of life?`
 
 The bot only responds to messages that are received by you, not sent. It will also work with group messages.
-The bot will respond to all private messages you receive and only messages with the prefixes in group chats.
+The bot will respond to all private messages you receive and only messages taht contain any of the prefixes in group chats.
 To change the OpenAI model being used, update the `OPENAI_MODEL` variable in the `config/constants.ts` file.
 
 ## Used libraries
