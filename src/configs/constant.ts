@@ -40,6 +40,6 @@ export const REMOVABLE_PREFIXES = [
   'ZAPPY,',
 ];
 
-export const OPENAI_MODEL = 'gpt-4';
+export const OPENAI_MODEL = 'gpt-3.5-turbo';
 
 export const DEFAULT_SYSTEM_MESSAGE = `You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.\nCurrent date: ${new Date().toISOString()}`;
