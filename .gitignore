@@ -56,6 +56,7 @@ node_modules/*
 .env
 
 .wwebjs_auth
+.wwebjs_cache
 
 # Sqlite database
 db/*
@@ -64,3 +65,4 @@ db/*
 
 dd.json
 *.key
+
