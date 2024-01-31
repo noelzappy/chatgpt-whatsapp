@@ -22,7 +22,7 @@ const handler = async (message: Message): Promise<void> => {
     const prompt: ChatMessage = {
       message: prefix.message.trim(),
       systemMessage: prefix.systemMessage,
-      quotedMessage: quotedMessage.body
+      quotedMessage: quotedMessage?.body
     };
 
     if (!prefix.isPrefix && chat.isGroup) return;
@@ -31,10 +31,12 @@ const handler = async (message: Message): Promise<void> => {
 
     Logger.info(`Received prompt from ${message.from}: ${prompt.message}`);
 
+
+
     const promptLength = countWords(prompt.message);
     if (promptLength > 70) {
        message.reply(
-        'MAXIMUM OF 70 WORDS PER MESSAGE ONLY.\nFor longer messages please visit \nhttps://chat.openai.com/ \nOr contact Wordnox.com for a custom solution.',
+        'MAXIMUM OF 70 WORDS PER MESSAGE ONLY.\nFor longer messages please contact Wordnox.com for a custom solution.',
        );
       return;
     }
