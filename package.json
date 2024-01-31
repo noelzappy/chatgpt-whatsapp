@@ -6,23 +6,23 @@
     "node": ">= 18.12 <19"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.1",
-    "@types/node": "^20.2.5",
-    "@types/qrcode-terminal": "^0.12.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.8",
-    "@typescript-eslint/parser": "^5.59.8",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-jest": "^27.2.1",
-    "jest": "^29.5.0",
-    "nodemon": "^2.0.22",
-    "pm2": "^5.3.0",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.1",
-    "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.13",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.3",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "pm2": "^5.3.1",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
     "tsutils": "^3.21.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.3.3"
   },
   "scripts": {
     "dev": "npx nodemon src/main.ts",
@@ -40,11 +40,11 @@
   "author": "Emmanuel Yeboah <noelzappy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "openai": "^3.2.1",
+    "dotenv": "^16.4.1",
+    "openai": "^4.26.0",
     "qrcode-terminal": "^0.12.0",
-    "tslib": "^2.5.2",
-    "whatsapp-web.js": "^1.21.0"
+    "tslib": "^2.6.2",
+    "whatsapp-web.js": "^1.23.0"
   },
   "volta": {
     "node": "18.12.1"

@@ -1,48 +1,44 @@
 import process from 'process';
 import dotenv from 'dotenv';
-import {
-  Configuration,
-  OpenAIApi,
-  ChatCompletionRequestMessage,
-  ChatCompletionResponseMessage,
-} from 'openai';
+
+import OpenAI from 'openai';
 import { ChatMessage, ChatMessageResponse } from '../@types/model';
 import { OPENAI_MODEL, DEFAULT_SYSTEM_MESSAGE } from './constant';
 
 dotenv.config();
 
-const configuration = new Configuration({
-  organization: process.env.OPENAI_ORG_ID,
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-// ChatGPT Client
-const openai = new OpenAIApi(configuration);
 
 export default openai;
 
 export const sendMessage = async (
   messagePrompt: ChatMessage,
 ): Promise<ChatMessageResponse> => {
-  const prompt: ChatCompletionRequestMessage[] = [
-    {
-      role: 'user',
-      content: messagePrompt.message,
-    },
-    {
-      role: 'system',
-      content: messagePrompt.systemMessage || DEFAULT_SYSTEM_MESSAGE,
-    },
-  ];
+  const prompt: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
 
-  const { data } = await openai.createChatCompletion({
+  if (messagePrompt.quotedMessage) {
+    prompt.push({
+      role: 'user',
+      content: messagePrompt.quotedMessage,
+    });
+  }
+  prompt.push({
+    role: 'user',
+    content: messagePrompt.message,
+  });
+  prompt.push({
+    role: 'system',
+    content: messagePrompt.systemMessage || DEFAULT_SYSTEM_MESSAGE,
+  });
+
+  const data = await openai.chat.completions.create({
     model: OPENAI_MODEL,
     messages: prompt,
   });
 
-  console.log(prompt);
-
-  const message: ChatCompletionResponseMessage = data.choices[0].message;
+  const message = data.choices[0].message;
 
   return {
     chatId: data.id,

@@ -28,4 +28,5 @@ export type ChatMessageResponse = {
 export type ChatMessage = {
   message: string;
   systemMessage?: string;
+  quotedMessage?: string;
 };
