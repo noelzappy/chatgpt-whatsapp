@@ -16,16 +16,22 @@ export default openai;
 export const sendMessage = async (
   messagePrompt: ChatMessage,
 ): Promise<ChatMessageResponse> => {
-  const prompt: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
-    {
+  const prompt: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
+
+  if (messagePrompt.quotedMessage) {
+    prompt.push({
       role: 'user',
-      content: messagePrompt.message,
-    },
-    {
-      role: 'system',
-      content: messagePrompt.systemMessage || DEFAULT_SYSTEM_MESSAGE,
-    },
-  ];
+      content: messagePrompt.quotedMessage,
+    });
+  }
+  prompt.push({
+    role: 'user',
+    content: messagePrompt.message,
+  });
+  prompt.push({
+    role: 'system',
+    content: messagePrompt.systemMessage || DEFAULT_SYSTEM_MESSAGE,
+  });
 
   const data = await openai.chat.completions.create({
     model: OPENAI_MODEL,

@@ -42,4 +42,4 @@ export const REMOVABLE_PREFIXES = [
 
 export const OPENAI_MODEL = 'gpt-3.5-turbo-1106';
 
-export const DEFAULT_SYSTEM_MESSAGE = `You are WhatsApp bot. Answer as concisely as possible.`;
+export const DEFAULT_SYSTEM_MESSAGE = `You are WhatsApp bot developed by Wordnox.com; Answer as concisely as possible.`;
